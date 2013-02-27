@@ -114,7 +114,7 @@
                 <a href="https://twitter.com/traviskuhl" class="icon-twitter"><em>@traviskuhl</em></a>
             </nav>
             <form method="GET" action="<?php echo URI; ?>">
-                <input type="test" placeholder="URL" value="<% url %>">
+                <input type="test" placeholder="URL" name="url" value="<% url %>">
             </form>
 
         </header>
@@ -134,6 +134,7 @@
                         'url': '<?php echo URI; ?>?url='+value
                     });
                     if (value.indexOf('.') !== -1) {
+                        $("article").setHTML("");
                         $("body").addClass('loading');
                         Y.io('<?php echo URI; ?>api/page.json', {
                             'method': 'GET',
