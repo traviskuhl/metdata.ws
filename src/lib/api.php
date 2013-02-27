@@ -23,6 +23,10 @@ class api extends \bolt\plugin\singleton {
 
     }
 
+    public function normalizeUrl($url) {
+        return filter_var((preg_match('#^https?://#', $url) ? $url : "http://".$url), FILTER_VALIDATE_URL);
+    }
+
     public function parseFromDom($text, $url) {
 
         // base

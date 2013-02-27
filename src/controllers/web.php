@@ -3,16 +3,10 @@
 namespace metadata\controller;
 use \b;
 
-
-class web extends \bolt\view {
-
-    public function get($site=false) {
-
-        var_dump($site); die;
-
-    }
-
-}
+b::route("*", function(){
+    $url = b::api()->normalizeUrl(p('url'));
+    return b::view()->setParams(array('url' => $url))->setFile(__DIR__."/../views/web");
+});
 
 
 b::route('test.html', function(){
