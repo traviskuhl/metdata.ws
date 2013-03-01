@@ -5,7 +5,10 @@ use \b;
 
 b::route("*", function(){
     $url = b::api()->normalizeUrl(p('url'));
-    return b::view()->setParams(array('url' => $url))->setFile(__DIR__."/../views/web");
+    return b::render(array(
+        'vars' => array('url' => $url),
+        'file' => __DIR__."/../views/web"
+    ));
 });
 
 
